@@ -1,4 +1,4 @@
 class StaticticsController < ApplicationController
-  def top
+  def statictics
   end
 end

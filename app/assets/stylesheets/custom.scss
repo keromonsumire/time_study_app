@@ -1,0 +1,99 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* universal */
+
+ body {
+    font-family:'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    padding-top: 200px;
+    background-color:#eee9e6;
+  } 
+  
+  section {
+    overflow: auto;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .center h1 {
+    margin-bottom: 10px;
+  }
+
+  a{
+      color:black;
+  }
+
+  /* typography */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+  }
+  
+  h1 {
+    font-size: 3em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #777;
+  }
+  
+  p {
+    font-size: 1.1em;
+    line-height: 1.7em;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color:skyblue;
+  }
+
+/* header */
+.logo{
+    float:left;
+    font-size:30px;
+    color:black;
+    padding-top:10px;
+}
+
+  /* footer */
+
+footer {
+    padding-top: 5px;
+    position: absolute;
+    bottom: 0; 
+    width:100%;
+    background-color:white;
+    a {
+        color: $gray;
+      }
+    a:hover {
+        color: $gray-darker;
+    }
+    small {
+        float:left;
+        padding-left:10px;
+    }
+
+  }
+  
+.contact{
+   float:right;
+   padding-right:10px;
+}
+
+ 
+  
+ 
