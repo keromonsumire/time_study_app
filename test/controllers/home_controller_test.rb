@@ -25,6 +25,5 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", statictics_path
     assert_select "a[href=?]", root_path, count:2
     assert_select "a[href=?]", contact_path
-
   end
 end
