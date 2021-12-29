@@ -1,3 +1,23 @@
-<% provide(:title, "ログイン") %>
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'ユーザー登録') %>
+<h1>ユーザー登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+        <%= render 'shared/error_messages' %>
+      <%= f.label :name,"名前" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email,"メールアドレス" %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "ユーザー登録する！", class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

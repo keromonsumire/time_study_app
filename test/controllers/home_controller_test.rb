@@ -13,10 +13,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "お問い合わせ | Time Keeper"
   end
 
-  test "should get login" do
+  test "should get signup" do
     get signup_path
     assert_response :success
-    assert_select "title", "ログイン | Time Keeper"
+    assert_select "title", "ユーザー登録 | Time Keeper"
   end
 
 
