@@ -18,12 +18,4 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "ユーザー登録 | Time Keeper"
   end
-
-
-  test "link to statictics and home" do
-    get root_url
-    assert_select "a[href=?]", statictics_path
-    assert_select "a[href=?]", root_path, count:2
-    assert_select "a[href=?]", contact_path
-  end
 end

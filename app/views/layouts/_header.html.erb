@@ -6,8 +6,12 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
               <%= link_to "トップページ", root_path %>
+              <% if logged_in? %>
               <%= link_to "統計", statictics_path %>
-              <%= link_to "ログイン", '#' %>
+              <%= link_to "ログアウト", logout_path, method: :delete %>
+              <% else %>
+              <%= link_to "ログイン", login_path %>
+              <% end %>
           </ul>
         </nav>
       </div>
