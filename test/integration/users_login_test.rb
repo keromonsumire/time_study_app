@@ -12,7 +12,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params:{ session: {email: @user.email, password: "invalid"} }
     assert_template 'sessions/new'
     assert_not flash.empty?
-    get statictics_path
+    get root_path
     assert flash.empty?
   end
 
