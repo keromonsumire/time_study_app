@@ -1,3 +1,12 @@
 <% provide(:title, "統計") %>
-<h1>Statictics#top</h1>
-<p>Find me in app/views/statictics/top.html.erb</p>
+<ul class="time_stamps" >
+    <% @starts.zip(@ends).each do |start, en| %>
+        <% if en != nil %>
+        <li>
+        <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %>
+        </li>
+        <% end %>
+    <% end %>
+</ul>
+
+

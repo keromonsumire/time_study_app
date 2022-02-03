@@ -1,4 +1,13 @@
 <% provide(:title, "トップページ") %>
+<% if logged_in? %>
+<p>
+<%= link_to "スタート","/home/create", method: :post, onclick:"startShowing()", class: "btn btn-lg btn-info", id:"startcount" %>
+<%= link_to "ストップ","/home/end", method: :post, onclick:"stopShowing()", class: "btn btn-lg btn-danger", id:"endcount" %>
+
+</p>
+<p id="PassageArea">(ここにカウントが表示されます)</p>
+
+<% else %>
 <div class="center">
   <h1><span style="color:skyblue">Time Keeper</span>にようこそ！</h1>
 
@@ -8,3 +17,4 @@
 
   <%= link_to "今すぐ登録！", signup_path, class: "btn btn-lg btn-info" %>
 </div>
+<% end %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'statictics',to:'statictics#statictics'
   get 'contact', to:'home#contact'
   root 'home#home'
+  post '/home/create', to: 'home#create'
+  post '/home/end', to: 'home#end'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
