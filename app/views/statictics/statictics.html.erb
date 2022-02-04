@@ -3,6 +3,8 @@
     <% @starts.zip(@ends).each do |start, en| %>
         <% if en != nil %>
         <li>
+        <%= start.created_at.to_s(:datetime_jp) %>
+        <%= en.created_at.to_s(:datetime_jp) %>
         <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %>
         </li>
         <% end %>
