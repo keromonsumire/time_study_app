@@ -2,17 +2,19 @@
 <ul class="time_stamps" >
     <% 365.times do |i| %>
         <% @starts.where(created_at: i.day.ago.all_day).zip(@ends.where(created_at: i.day.ago.all_day)).each do |start, en| %>
+            
             <% if en %>
                 <li class="list-group-item">
-                開始時刻: <%= start.created_at.strftime('%H時 %M分') %>
-                終了時刻: <%= en.created_at.to_s(:datetime_jp) %>
-                時間: <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %>
+                <p> <%= Date.today.prev_day(i) %> </p>    
+                <p> 開始: <%= start.created_at.strftime('%H時 %M分') %> </p>
+                <p> 終了: <%= en.created_at.strftime('%H時 %M分') %> </p>
+                <p> タイム: <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %> </p>
                 <% @total += ((en.created_at - start.created_at).floor) %>
                 </li>
             <% end %>
         <% end %>    
         <% if @total != 0 %>
-           <p> <%= Date.today.prev_day(i) %> の合計時間は　<%= Time.at(@total).utc.strftime('%X') %> です </p>
+           <p> <%= Date.today.prev_day(i) %> の合計時間は <%= Time.at(@total).utc.strftime('%X') %> です </p>
             <% @total = 0 %>
         <% end %>
     <% end %>    
