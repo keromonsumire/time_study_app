@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
     def home 
+        if logged_in?
+            @user = current_user
+            if (Start.where(user_id: @user.id).count - 1 == End.where(user_id: @user.id).count)
+                @new_start = Start.where(user_id: @user.id).last.created_at.to_s(:datetime_jp)
+
+            end    
+        end
     end
 
     def contact
@@ -7,7 +14,7 @@ class HomeController < ApplicationController
 
     def create
         @user = current_user
-        if (Start.where(user_id: 1).count - End.where(user_id: 1).count == 0)
+        if (Start.where(user_id: @user.id).count - End.where(user_id: @user.id).count == 0)
             @user.starts.create
         end
         redirect_to root_url
@@ -19,6 +26,7 @@ class HomeController < ApplicationController
             @end = End.new(user_id:@user.id)
             @end.save
         end
+        redirect_to root_url
     end
     
 end
