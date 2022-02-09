@@ -8,7 +8,11 @@
               <%= link_to "トップページ", root_path %>
               <% if logged_in? %>
               <%= link_to "統計", statictics_path %>
+              <%= link_to "設定", edit_user_path(current_user) %>
               <%= link_to "ログアウト", logout_path, method: :delete %>
+              <% if current_user.admin? %>
+              <%= link_to "ユーザー一覧", "/users" %>
+              <% end %>
               <% else %>
               <%= link_to "ログイン", login_path %>
               <% end %>

@@ -1,0 +1,18 @@
+<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: @user %>
+  
+    <%= f.label :name,"名前" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email,"メールアドレス" %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-info" %>
+
+  <% end %>
