@@ -5,7 +5,7 @@
             
             <% if en %>
                 <li class="list-group-item">
-                <p> <%= Date.today.prev_day(i) %> </p>    
+                <p> <%= Date.today.prev_day(i) %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/statictics/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
                 <p> 開始: <%= start.created_at.strftime('%H時 %M分') %> </p>
                 <p> 終了: <%= en.created_at.strftime('%H時 %M分') %> </p>
                 <p> タイム: <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %> </p>
