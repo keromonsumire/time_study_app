@@ -1,0 +1,6 @@
+<% provide(:title, "時間編集") %>
+<%= form_for(@end, url:{controller: 'end', action: 'update'}) do |f|%>
+    <%= f.label :time, "開始時刻" %>
+    <%= f.datetime_select :time, class:'form-control' %>
+    <%= f.submit %>
+<% end %>

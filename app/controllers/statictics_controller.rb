@@ -7,9 +7,4 @@ class StaticticsController < ApplicationController
     @total = 0
   end
 
-  def destroy
-    Start.find(params[:id]).destroy
-    flash[:success] = "記録は削除されました"
-    redirect_to statictics_path
-  end
 end  

@@ -1,15 +1,15 @@
 <% provide(:title, "統計") %>
 <ul class="time_stamps" >
     <% 365.times do |i| %>
-        <% @starts.where(created_at: i.day.ago.all_day).zip(@ends.where(created_at: i.day.ago.all_day)).each do |start, en| %>
+        <% @starts.where(time: i.day.ago.all_day).zip(@ends.where(time: i.day.ago.all_day)).each do |start, en| %>
             
             <% if en %>
                 <li class="list-group-item">
-                <p> <%= Date.today.prev_day(i) %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/statictics/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
-                <p> 開始: <%= start.created_at.strftime('%H時 %M分') %> </p>
-                <p> 終了: <%= en.created_at.strftime('%H時 %M分') %> </p>
-                <p> タイム: <%= Time.at((en.created_at - start.created_at).floor).utc.strftime('%X') %> </p>
-                <% @total += ((en.created_at - start.created_at).floor) %>
+                <p> <%= Date.today.prev_day(i) %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
+                <p> 開始: <%= start.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/start/#{start.id}/edit" %></p>
+                <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit" %> </p>
+                <p> タイム: <%= Time.at((en.time - start.time).floor).utc.strftime('%X') %> </p>
+                <% @total += ((en.time - start.time).floor) %>
                 </li>
             <% end %>
         <% end %>    
