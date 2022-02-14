@@ -1,11 +1,27 @@
 <% provide(:title, "トップページ") %>
 <% if logged_in? %>
 <p>
-<%= link_to "スタート","/home/create", method: :post, onclick:"startShowing()", class: "btn btn-lg btn-info", id:"startcount" %>
-<%= link_to "ストップ","/home/end", method: :post, onclick:"stopShowing()", class: "btn btn-lg btn-danger", id:"endcount" %>
+<%= link_to "スタート","/home/create", method: :post, class: "btn btn-lg btn-info", id:"startcount" %>
+<%= link_to "ストップ","/home/end", method: :post, class: "btn btn-lg btn-danger", id:"endcount" %>
 </p>
 
 <p>タイマー開始時刻: <%= @new_start %></p>
+<p id="datetime"></p>
+<script type="text/javascript">
+
+  $(document).ready(function() 
+  { setInterval(function(){
+    var dd = new Date();
+    var YYYY = dd.getFullYear();
+    var MM = dd.getMonth()+1;
+    var DD = dd.getDate();
+    var HH = dd.getHours();
+    var mm = dd.getMinutes();
+    $('#datetime').text("現在時刻:" + YYYY + "年" + MM + "月" + DD + "日" + HH + "時" + mm + "分");
+},1000);
+  });
+
+</script>
 
 <% else %>
 <div class="center">
