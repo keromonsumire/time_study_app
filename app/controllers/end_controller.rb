@@ -6,7 +6,7 @@ class EndController < ApplicationController
   def update
     @end = End.find_by(id: params[:id])
     if @end.update(end_params)
-      flash[:success] = "開始時刻が更新されました"
+      flash[:success] = "終了時刻が更新されました"
       redirect_to statictics_path
     else
       render 'edit'
