@@ -1,7 +1,8 @@
 <% provide(:title, "統計") %>
 <ul class="time_stamps" >
     <% 365.times do |i| %>
-        <% @starts.where(time: i.day.ago.all_day).zip(@ends.where(time: i.day.ago.all_day)).each do |start, en| %>
+        <% @starts.where(time: i.day.ago.all_day).each do |start| %>
+            <% en = @ends.find_by(start_id: start.id) %>
             <% if en %>
                 <li class="list-group-item">
                 <p> <%= Date.today.prev_day(i) %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
