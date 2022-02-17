@@ -1,4 +1,8 @@
 <% provide(:title, "統計") %>
+<%= link_to "前の週へ", statictics_up_path, method: :post %>
+<% if session[:up] != nil %>
+<%= link_to "次の週へ", statictics_down_path, method: :post　%>
+<% end %>
 <%= column_chart @data, xtitle: "日付", ytitle: "時間(秒)" %>
 <ul class="time_stamps" >
     <% 365.times do |i| %>

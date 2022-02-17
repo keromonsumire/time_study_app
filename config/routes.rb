@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'signup', to:'users#new'
   get 'statictics',to:'statictics#statictics'
+  post '/statictics/up', to: 'statictics#up'
+  post '/statictics/down', to: 'statictics#down'
   get 'start/:id/edit', to:'start#edit'
   patch 'start/:id/update', to: 'start#update'
   delete '/start/:id/destroy', to: 'start#destroy'
