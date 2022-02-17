@@ -13,7 +13,7 @@ def update
     @start = Start.find_by(id:params[:id])
     @end = End.find_by(start_id: @start.id)
     if @start.update(start_params)
-        @end.update(range: (@end.time - @start.time).to_i )
+        @end.update(range: (@end.time - @start.time).to_f / 3600)
         flash[:success] = "開始時刻が更新されました"
         redirect_to statictics_path
       else

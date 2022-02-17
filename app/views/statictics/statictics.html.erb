@@ -3,7 +3,7 @@
 <% if session[:up] != nil %>
 <%= link_to "次の週へ", statictics_down_path, method: :post　%>
 <% end %>
-<%= column_chart @data, xtitle: "日付", ytitle: "時間(秒)" %>
+<%= column_chart @data, xtitle: "日付", ytitle: "タイム(時間)" %>
 <ul class="time_stamps" >
     <% 365.times do |i| %>
         <% @starts.where(time: i.day.ago.all_day).each do |start| %>
