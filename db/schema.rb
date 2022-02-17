@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_020610) do
+ActiveRecord::Schema.define(version: 2022_02_16_060034) do
 
   create_table "ends", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_020610) do
     t.datetime "updated_at", null: false
     t.integer "start_id"
     t.datetime "time"
+    t.integer "range"
     t.index ["start_id"], name: "index_ends_on_start_id"
     t.index ["user_id"], name: "index_ends_on_user_id"
   end

@@ -1,4 +1,5 @@
 <% provide(:title, "統計") %>
+<%= column_chart @data, xtitle: "日付", ytitle: "時間(秒)" %>
 <ul class="time_stamps" >
     <% 365.times do |i| %>
         <% @starts.where(time: i.day.ago.all_day).each do |start| %>
@@ -19,6 +20,3 @@
         <% end %>
     <% end %>    
 </ul>
-
-
-

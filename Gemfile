@@ -6,6 +6,8 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
 gem "jquery-rails"
+gem 'chartkick'
+gem 'groupdate'
 gem 'rails-controller-testing'
 gem 'rails-i18n'
 gem 'bcrypt',         '3.1.13'
