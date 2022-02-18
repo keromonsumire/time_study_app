@@ -4,23 +4,19 @@
 <%= link_to "次の週へ", statictics_down_path, method: :post　%>
 <% end %>
 <%= column_chart @data, xtitle: "日付", ytitle: "タイム(時間)" %>
+<%= will_paginate @starts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 <ul class="time_stamps" >
-    <% 365.times do |i| %>
-        <% @starts.where(time: i.day.ago.all_day).each do |start| %>
+        <% @starts.each do |start| %>
             <% en = @ends.find_by(start_id: start.id) %>
             <% if en %>
                 <li class="list-group-item">
-                <p> <%= Date.today.prev_day(i) %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
+                <p> <%= start.time.strftime("%Y/%m/%d") %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
                 <p> 開始: <%= start.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/start/#{start.id}/edit" %></p>
                 <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit" %> </p>
                 <p> タイム: <%= Time.at((en.time - start.time).floor).utc.strftime('%X') %> </p>
-                <% @total += ((en.time - start.time).floor) %>
                 </li>
             <% end %>
         <% end %>    
-        <% if @total != 0 %>
-        <p> <%= Date.today.prev_day(i) %> の合計時間は <%= Time.at(@total).utc.strftime('%X') %> です </p>
-            <% @total = 0 %>
-        <% end %>
-    <% end %>    
 </ul>
+<%= will_paginate @starts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+<%= session[:up] %>
