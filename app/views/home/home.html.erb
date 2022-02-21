@@ -1,8 +1,12 @@
 <% provide(:title, "トップページ") %>
 <% if logged_in? %>
 <p>
+<% if @start.count - @end.count == 0 %>
 <%= link_to "スタート","/home/create", method: :post, class: "btn btn-lg btn-info", id:"startcount" %>
+<% end %>
+<% if @start.count - 1 == @end.count %>
 <%= link_to "ストップ","/home/end", method: :post, class: "btn btn-lg btn-danger", id:"endcount" %>
+<% end %>
 </p>
 
 <p>タイマー開始時刻: <%= @new_start %></p>
