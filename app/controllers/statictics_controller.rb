@@ -11,14 +11,14 @@ class StaticticsController < ApplicationController
   end
 
   def statictics
-    if (session[:up] == nil) || (session[:up] % 7 != Time.now.wday) || session[:up].negative?
+    if (session[:up] == nil) || (session[:up] % 7 != Time.current.wday) || session[:up].negative?
       @up = 0
     else
       @up = session[:up]
     end
 
     if (Time.now.wday != 0) && (@up == 0)
-      1.upto(7 - Time.now.wday) do |i|
+      1.upto(7 - Time.current.wday) do |i|
         @data.push([Date.today.next_day(i), 0])
       end
     end
@@ -29,7 +29,7 @@ class StaticticsController < ApplicationController
       else
         @data.unshift([Date.today.prev_day(i), 0])
       end
-      if Time.now.ago(i.days).wday == 1
+      if Time.current.ago(i.days).wday == 1
         break
       end
     end  
@@ -38,8 +38,8 @@ class StaticticsController < ApplicationController
   end
 
   def up
-    if (session[:up] == nil) || (session[:up] % 7 != Time.now.wday) || session[:up].negative?
-      session[:up] = Time.now.wday
+    if (session[:up] == nil) || (session[:up] % 7 != Time.current.wday) || session[:up].negative?
+      session[:up] = Time.current.wday
     else
       session[:up] += 7
     end
