@@ -7,7 +7,7 @@ class EndController < ApplicationController
     @end = End.find_by(id: params[:id])
     @start = Start.find_by(id: @end.start_id)
     if @end.update(end_params)
-      @end.update(length: ((@end.time - @start.time) / 3600).to_f)
+      @end.update(range: ((@end.time - @start.time) / 3600).to_f)
       flash[:success] = "終了時刻が更新されました"
       redirect_to statictics_path
     else

@@ -25,7 +25,7 @@ class StaticticsController < ApplicationController
 
     @up.upto(@up + 7) do |i|
       if @ends.where(time: i.day.ago.all_day) 
-        @data.unshift([Date.today.prev_day(i), @ends.where(time: i.day.ago.all_day).sum(:length)])
+        @data.unshift([Date.today.prev_day(i), @ends.where(time: i.day.ago.all_day).sum(:range)])
       else
         @data.unshift([Date.today.prev_day(i), 0])
       end
@@ -33,7 +33,7 @@ class StaticticsController < ApplicationController
         break
       end
     end  
-    @today_total = @ends.where(time: Time.current.all_day ).sum(:length)
+    @today_total = @ends.where(time: Time.current.all_day ).sum(:range)
     @week_total = @data.sum.select{|num| (num.class == Integer) || (num.class == Float)}.sum
   end
 
