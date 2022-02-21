@@ -10,28 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_111814) do
+ActiveRecord::Schema.define(version: 2022_02_21_120923) do
 
-  create_table "ends", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "start_id"
-    t.datetime "time"
-    t.integer "range"
-    t.index ["start_id"], name: "index_ends_on_start_id"
-    t.index ["user_id"], name: "index_ends_on_user_id"
-  end
+# Could not dump table "ends" because of following StandardError
+#   Unknown type 'real' for column 'length'
 
   create_table "starts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "stop_id"
     t.integer "end_id"
     t.datetime "time"
     t.index ["end_id"], name: "index_starts_on_end_id"
-    t.index ["stop_id"], name: "index_starts_on_stop_id"
     t.index ["user_id"], name: "index_starts_on_user_id"
   end
 
@@ -39,8 +29,6 @@ ActiveRecord::Schema.define(version: 2022_02_21_111814) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "start_id"
-    t.index ["start_id"], name: "index_stops_on_start_id"
     t.index ["user_id"], name: "index_stops_on_user_id"
   end
 
