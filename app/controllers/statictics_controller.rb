@@ -33,6 +33,8 @@ class StaticticsController < ApplicationController
         break
       end
     end  
+    @today_total = @ends.where(time: Time.current.all_day ).sum(:range)
+    @week_total = @data.sum.select{|num| (num.class == Integer) || (num.class == Float)}.sum
   end
 
   def up
