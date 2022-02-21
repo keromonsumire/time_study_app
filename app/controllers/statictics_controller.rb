@@ -1,5 +1,5 @@
 class StaticticsController < ApplicationController
-  require "date"
+  require 'date'
   before_action :setup
 
   def setup
@@ -19,15 +19,15 @@ class StaticticsController < ApplicationController
 
     if (Time.now.wday != 0) && (@up == 0)
       1.upto(7 - Time.current.wday) do |i|
-        @data.push([Date.today.next_day(i), 0])
+        @data.push([Time.current.since(i.days).to_date, 0])
       end
     end
 
     @up.upto(@up + 7) do |i|
       if @ends.where(time: i.day.ago.all_day) 
-        @data.unshift([Date.today.prev_day(i), @ends.where(time: i.day.ago.all_day).sum(:range)])
+        @data.unshift([Time.current.ago(i.days).to_date, @ends.where(time: i.day.ago.all_day).sum(:range)])
       else
-        @data.unshift([Date.today.prev_day(i), 0])
+        @data.unshift([Time.current.ago(i.days).to_date, 0])
       end
       if Time.current.ago(i.days).wday == 1
         break
