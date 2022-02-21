@@ -30,7 +30,7 @@ class HomeController < ApplicationController
 
     def end
         if (@start.count - 1 == @end.count)
-            End.create(user_id:@user.id,start_id: @start.last.id, time: Time.now, range: ((Time.now - @start.last.time).to_f / 3600))
+            End.create(user_id:@user.id,start_id: @start.last.id, time: Time.now, range: ((Time.now - @start.last.time) / 3600).to_f )
         end
         redirect_to root_url
     end
