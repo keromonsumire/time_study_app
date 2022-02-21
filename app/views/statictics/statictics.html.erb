@@ -1,10 +1,4 @@
 <% provide(:title, "統計") %>
-<h1>
-今日の合計・・・<%= @today_total.floor %>時間<%= (60*(@today_total - @today_total.floor)).floor %>分
-</h1>
-<h1>
-週の合計・・・<%= @week_total.floor %>時間<%= (60*(@week_total - @week_total.floor)).floor %>分
-</h1>
 <%= link_to "前の週へ", statictics_up_path, method: :post %>
 <% if session[:up] != nil %>
 <%= link_to "次の週へ", statictics_down_path, method: :post　%>
