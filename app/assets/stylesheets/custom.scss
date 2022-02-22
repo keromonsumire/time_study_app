@@ -68,6 +68,15 @@ h1, h2, h3, h4, h5, h6 {
     padding-top:10px;
 }
 
+.nav{
+  margin-top:10px;
+}
+
+.nav-link{
+  font-size:20px;
+  margin-right:5px;
+}
+
   /* footer */
 
 footer {
@@ -130,6 +139,28 @@ input {
 
 .error {
   color:red;
+}
+
+/* home */
+#startcount{
+  display:block;
+  margin:0 auto;
+  width:200px;
+  padding:85px 0 85px 0;
+  border-radius:100%;
+}
+
+#endcount{
+  display:block;
+  margin:0 auto;
+  width:200px;
+  padding:85px 0 85px 0;
+  border-radius:100%;
+}
+
+.timer{
+  text-align:center;
+  font-size:20px;
 }
 
 /* statictics */
