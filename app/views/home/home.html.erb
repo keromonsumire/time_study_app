@@ -20,18 +20,10 @@
 </script>
 <p>
 <% if @start.count - @end.count == 0 %>
-  <div class="row">
-    <div class="col-xs-12">
-      <%= link_to "スタート","/home/create", method: :post, class: "btn btn-lg btn-info", id:"startcount" %>
-    </div>
-  </div>
+    <%= link_to "スタート","/start/create", method: :post, class: "btn btn-lg btn-info", id:"startcount" %>
 <% end %>
 <% if @start.count - 1 == @end.count %>
-  <div class="row">
-    <div class="col-xs-12">
-      <%= link_to "ストップ","/home/end", method: :post, class: "btn btn-lg btn-primary", id:"endcount" %>
-    </div>
-  </div>
+    <%= link_to "ストップ","/end/create", method: :post, class: "btn btn-lg btn-primary", id:"endcount" %>
 <% end %>
 </p>
 </div> 

@@ -1,4 +1,18 @@
 class StartController < ApplicationController
+
+def create
+    @user = current_user
+    if @user != nil
+        @start = Start.where(user_id: @user.id)
+        @end = End.where(user_id: @user.id)
+    end    
+
+    if (@start.count - @end.count == 0)
+        @user.starts.create(time: Time.current)
+    end
+    redirect_to root_url
+end   
+
 def destroy
     Start.find(params[:id]).destroy
     flash[:success] = "記録は削除されました"

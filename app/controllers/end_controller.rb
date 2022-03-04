@@ -1,4 +1,17 @@
 class EndController < ApplicationController
+
+  def create
+    @user = current_user
+    if @user != nil
+        @start = Start.where(user_id: @user.id)
+        @end = End.where(user_id: @user.id)
+    end    
+    if (@start.count - 1 == @end.count)
+        End.create(user_id:@user.id,start_id: @start.last.id, time: Time.current, range:((Time.now - @start.last.time)/3600).to_f)
+    end
+    redirect_to root_url
+  end
+
   def edit
     @end = End.find_by(id: params[:id])
   end

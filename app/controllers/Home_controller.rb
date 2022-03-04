@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-    before_action :start_and_end, only: [:home,:create,:end]
+    before_action :start_and_end, only: :home
 
     def start_and_end
         @user = current_user
@@ -19,20 +19,6 @@ class HomeController < ApplicationController
     end
 
     def contact
-    end
-
-    def create
-        if (@start.count - @end.count == 0)
-            @user.starts.create(time: Time.current)
-        end
-        redirect_to root_url
-    end   
-
-    def end
-        if (@start.count - 1 == @end.count)
-            End.create(user_id:@user.id,start_id: @start.last.id, time: Time.current, range:((Time.now - @start.last.time)/3600).to_f)
-        end
-        redirect_to root_url
     end
     
 end
