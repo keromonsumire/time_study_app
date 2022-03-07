@@ -24,11 +24,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報が更新されました"
-      redirect_to root_url
+    if @user.email != "guest@example.com"
+      if @user.update_attributes(user_params) 
+        flash[:success] = "ユーザー情報が更新されました"
+        redirect_to root_url
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      flash[:danger] = "ゲストユーザーの情報は変更できません"
+      redirect_to root_url
     end
   end
 

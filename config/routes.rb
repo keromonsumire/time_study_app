@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  post 'users/guest_sign_in', to: 'sessions#new_guest'
   get 'signup', to:'users#new'
   get 'statictics',to:'statictics#statictics'
   post '/statictics/up', to: 'statictics#up'
