@@ -28,9 +28,24 @@ class EndController < ApplicationController
     end
   end
 
+  def edit_memo
+    @end = End.find_by(id: params[:id])
+  end
+
+  def update_memo
+    @end = End.find_by(id: params[:id])
+    if @end.update(end_params)
+      @end.update(end_params)
+      flash[:success] = "メモが追加されました"
+      redirect_to statictics_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 def end_params
-    params.require(:end).permit(:time)
+    params.require(:end).permit(:time, :memo)
 end
 
 end

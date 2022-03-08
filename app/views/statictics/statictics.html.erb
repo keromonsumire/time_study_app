@@ -20,6 +20,11 @@
                 <p> 開始: <%= start.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/start/#{start.id}/edit" %></p>
                 <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit" %> </p>
                 <p> タイム: <%= Time.at((en.time - start.time).floor).utc.strftime('%X') %> </p>
+                <% if en.memo.nil? || en.memo.empty? %>
+                    <p> <%= link_to "メモを追加する", "/end/#{en.id}/edit_memo" %> </p>
+                <% else %>
+                    <p> メモ: <%= en.memo %> <%= link_to "(メモを編集)", "/end/#{en.id}/edit_memo" %> </p>
+                <% end %>
                 </li>
             <% end %>
         <% end %>    

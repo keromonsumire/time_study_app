@@ -1,0 +1,6 @@
+<% provide(:title, "メモ編集") %>
+<%= form_for(@end, url:{controller: 'end', action: 'update_memo'}) do |f|%>
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, class:'form-control' %>
+    <%= f.submit %>
+<% end %>
