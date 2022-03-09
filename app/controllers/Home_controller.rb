@@ -10,13 +10,12 @@ class HomeController < ApplicationController
     end
 
     def home 
-        if logged_in?
-            if (@start.count - 1 == @end.count)
-                @new_start = Start.where(user_id: @user.id).last.created_at.to_s(:datetime_jp)
-
-            end    
+        if logged_in? && (@start.count - 1 == @end.count)
+            @time = ((@start.last.time - Time.local(1970,1,1,9,0,0,0)) * 1000)
         end
     end
+
+
 
     def contact
     end

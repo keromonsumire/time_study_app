@@ -1,23 +1,26 @@
 <% provide(:title, "トップページ") %>
 <% if logged_in? %>
 <div class = "container">
-<p class="timer">タイマー開始時刻: <%= @new_start %></p>
-<p id="datetime" class= "timer" ></p>
+<% if @start.count == @end.count + 1 %>
+<p class="timer" id="timer" data-time='<%= @time %>'  ></p>
+<% else %>
+<p class="dummy-timer"> 00:00:00 </p>
+<% end %>
 <script type="text/javascript">
 
-  $(document).ready(function() 
-  { setInterval(function(){
-    var dd = new Date();
-    var YYYY = dd.getFullYear();
-    var MM = dd.getMonth()+1;
-    var DD = dd.getDate();
-    var HH = dd.getHours();
-    var mm = dd.getMinutes();
-    $('#datetime').text("現在時刻:" + YYYY + "年" + MM + "月" + DD + "日" + HH + "時" + mm + "分");
-},1000);
-  });
 
+  setInterval(function(){
+    const time = $('#timer').data('time');
+    var now = new Date();
+    var timer = Math.floor((now.getTime() - time)/1000);
+    var hour = ( "00" + Math.floor(timer / 3600)).slice(-2);
+    var minute = ( "00" + Math.floor(timer / 60)).slice(-2);
+    var second = ("00" + timer % 60).slice(-2);
+    $('#timer').text(hour + ":" + minute + ":" + second);
+  },1000);
+ 
 </script>
+
 <p>
 <% if @start.count - @end.count == 0 %>
     <%= link_to "スタート","/start/create", method: :post, class: "btn btn-lg btn-info", id:"startcount" %>
