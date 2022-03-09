@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
     def home 
         if logged_in? && (@start.count - 1 == @end.count)
-            @time = ((@start.last.time - Time.local(1970,1,1,9,0,0,0)) * 1000)
+            @time = ((@start.last.time - Time.local(1969,12,31,23,20,0,0)) * 1000)
         end
     end
 
