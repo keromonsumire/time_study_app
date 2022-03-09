@@ -14,7 +14,7 @@
     var now = new Date();
     var timer = Math.floor((now.getTime() - time)/1000);
     var hour = ( "00" + Math.floor(timer / 3600)).slice(-2);
-    var minute = ( "00" + Math.floor(timer / 60)).slice(-2);
+    var minute = ( "00" + Math.floor((timer / 60)%60)).slice(-2);
     var second = ("00" + timer % 60).slice(-2);
     $('#timer').text(hour + ":" + minute + ":" + second);
   },1000);

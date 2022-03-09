@@ -2,14 +2,34 @@
 <h1>
 今日の合計・・・<%= @today_total.floor %>時間<%= (60*(@today_total - @today_total.floor)).floor %>分
 </h1>
+
+<% if session[:week_or_month] == 0 %>
+
+
 <h1>
 週の合計・・・<%= @week_total.floor %>時間<%= (60*(@week_total - @week_total.floor)).floor %>分
 </h1>
+<p class = "graph-title"> 週間グラフ <%= link_to "月間グラフ", statictics_change_to_month_path, method: :post, class:"change" %> </p>
+
 <%= link_to "前の週へ", statictics_up_path, method: :post %>
 <% if session[:up] != nil %>
 <%= link_to "次の週へ", statictics_down_path, method: :post　%>
 <% end %>
-<%= column_chart @data, xtitle: "日付", ytitle: "タイム(時間)" %>
+<%= column_chart @week_data, xtitle: "日付", ytitle: "タイム(時間)" %>
+
+<% else %>
+
+<h1>
+月の合計・・・<%= @month_total.floor %>時間<%= (60*(@month_total - @month_total.floor)).floor %>分
+</h1>
+
+<p class = "graph-title"> <%= link_to "週間グラフ", statictics_change_to_week_path, method: :post, class:"change" %> 月間グラフ</p>
+<%= link_to "前の月へ", statictics_point_up_path, method: :post %>
+<%= link_to "次の月へ", statictics_point_down_path, method: :post　%>
+<%= column_chart @month_data, xtitle: "日付", ytitle: "タイム(時間)" %>
+
+<% end %>
+
 <%= will_paginate @starts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 <ul class="time_stamps" >
         <% @starts.each do |start| %>
