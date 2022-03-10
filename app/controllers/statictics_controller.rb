@@ -20,15 +20,15 @@ class StaticticsController < ApplicationController
 
     if (Time.now.wday != 0) && (@up == 0)
       1.upto(7 - Time.current.wday) do |i|
-        @week_data.push([Time.current.since(i.days).to_date, 0])
+        @week_data.push([Time.current.since(i.days).to_date.month.to_s + "/" + Time.current.since(i.days).to_date.day.to_s, 0])
       end
     end
 
     @up.upto(@up + 7) do |i|
       if @ends.where(time: i.day.ago.all_day) 
-        @week_data.unshift([Time.current.ago(i.days).to_date, @ends.where(time: i.day.ago.all_day).sum(:range)])
+        @week_data.unshift([(Time.current.ago(i.days).to_date.month.to_s + "/" + Time.current.ago(i.days).to_date.day.to_s), @ends.where(time: i.day.ago.all_day).sum(:range)])
       else
-        @week_data.unshift([Time.current.ago(i.days).to_date, 0])
+        @week_data.unshift([(Time.current.ago(i.days).to_date.month.to_s + "/" + Time.current.ago(i.days).to_date.day.to_s), 0])
       end
       if Time.current.ago(i.days).wday == 1
         break
@@ -45,9 +45,9 @@ class StaticticsController < ApplicationController
       100.times do |i|
         point = Time.current.ago(session[:month].month).end_of_month.ago(i.days)
         if @ends.where(time: point.all_day)
-          @month_data.unshift([point.to_date, @ends.where(time: point.all_day).sum(:range)])
+          @month_data.unshift([(point.to_date.month.to_s + "/" + point.to_date.day.to_s), @ends.where(time: point.all_day).sum(:range)])
         else
-          @month_data.unshift([point.to_date, 0])
+          @month_data.unshift([(point.to_date.month.to_s + "/" + point.to_date.day.to_s), 0])
         end
           if point.day == 1
             break
