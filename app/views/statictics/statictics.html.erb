@@ -11,9 +11,9 @@
 </h1>
 <p class = "graph-title"> 週間グラフ <%= link_to "月間グラフ", statictics_change_to_month_path, method: :post, class:"change" %> </p>
 
-<%= link_to "前の週へ", statictics_up_path, method: :post %>
+<%= link_to "前の週へ", statictics_up_path, method: :post, class:"go-to-prev" %>
 <% if session[:up] != nil %>
-<%= link_to "次の週へ", statictics_down_path, method: :post　%>
+<%= link_to "次の週へ", statictics_down_path, method: :post, class:"go-to-next" %>
 <% end %>
 <%= column_chart @week_data, xtitle: "日付", ytitle: "タイム(時間)" %>
 
@@ -24,8 +24,8 @@
 </h1>
 
 <p class = "graph-title"> <%= link_to "週間グラフ", statictics_change_to_week_path, method: :post, class:"change" %> 月間グラフ</p>
-<%= link_to "前の月へ", statictics_point_up_path, method: :post %>
-<%= link_to "次の月へ", statictics_point_down_path, method: :post　%>
+<%= link_to "前の月へ", statictics_point_up_path, method: :post, class:"go-to-prev" %>
+<%= link_to "次の月へ", statictics_point_down_path, method: :post, class:"go-to-next" %>
 <%= column_chart @month_data, xtitle: "日付", ytitle: "タイム(時間)" %>
 
 <% end %>
