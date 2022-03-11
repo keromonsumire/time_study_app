@@ -201,10 +201,15 @@ input {
   font-size:20px;
   font-weight:bold;
 }
-  
+
+.underline{
+text-decoration:underline;
+}
+
 .change{
   font-size:20px;
   font-weight:normal;
+  text-decoration:none;
 }
 
 .go-to-prev{

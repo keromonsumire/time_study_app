@@ -9,13 +9,15 @@
 <h1>
 週の合計・・・<%= @week_total.floor %>時間<%= (60*(@week_total - @week_total.floor)).floor %>分
 </h1>
-<p class = "graph-title"> 週間グラフ <%= link_to "月間グラフ", statictics_change_to_month_path, method: :post, class:"change" %> </p>
-
+<p class = "graph-title"> <span class= "underline">週間グラフ</span> <%= link_to "月間グラフ", statictics_change_to_month_path, method: :post, class:"change" %> </p>
 <%= link_to "前の週へ", statictics_up_path, method: :post, class:"go-to-prev" %>
 <% if session[:up] != nil %>
 <%= link_to "次の週へ", statictics_down_path, method: :post, class:"go-to-next" %>
 <% end %>
 <%= column_chart @week_data,ytitle: "(h)" %>
+<div class="container space">
+   <p></p>
+</div>
 
 <% else %>
 
@@ -23,7 +25,7 @@
 月の合計・・・<%= @month_total.floor %>時間<%= (60*(@month_total - @month_total.floor)).floor %>分
 </h1>
 
-<p class = "graph-title"> <%= link_to "週間グラフ", statictics_change_to_week_path, method: :post, class:"change" %> 月間グラフ</p>
+<p class = "graph-title"> <%= link_to "週間グラフ", statictics_change_to_week_path, method: :post, class:"change" %> <span class="underline">月間グラフ</span></p>
 <%= link_to "前の月へ", statictics_point_up_path, method: :post, class:"go-to-prev" %>
 <%= link_to "次の月へ", statictics_point_down_path, method: :post, class:"go-to-next" %>
 <%= column_chart @month_data, ytitle: "(h)" %>
