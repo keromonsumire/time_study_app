@@ -15,7 +15,7 @@
 <% if session[:up] != nil %>
 <%= link_to "次の週へ", statictics_down_path, method: :post, class:"go-to-next" %>
 <% end %>
-<%= column_chart @week_data, xtitle: "日付", ytitle: "タイム(時間)" %>
+<%= column_chart @week_data,ytitle: "(h)" %>
 
 <% else %>
 
@@ -26,7 +26,10 @@
 <p class = "graph-title"> <%= link_to "週間グラフ", statictics_change_to_week_path, method: :post, class:"change" %> 月間グラフ</p>
 <%= link_to "前の月へ", statictics_point_up_path, method: :post, class:"go-to-prev" %>
 <%= link_to "次の月へ", statictics_point_down_path, method: :post, class:"go-to-next" %>
-<%= column_chart @month_data, xtitle: "日付", ytitle: "タイム(時間)" %>
+<%= column_chart @month_data, ytitle: "(h)" %>
+<div class="container space">
+   <p></p>
+</div>
 
 <% end %>
 
@@ -35,15 +38,15 @@
         <% @starts.each do |start| %>
             <% en = @ends.find_by(start_id: start.id) %>
             <% if en %>
-                <li class="list-group-item">
-                <p> <%= start.time.strftime("%Y/%m/%d") %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"link" %> </p>    
-                <p> 開始: <%= start.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/start/#{start.id}/edit" %></p>
-                <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit" %> </p>
+                <li class="list-group-item" id="time-list">
+                <p> <%= start.time.strftime("%Y/%m/%d") %> &nbsp;&nbsp;&nbsp;&nbsp;　<%= link_to "この記録を削除", "/start/#{start.id}/destroy", method: :delete, class:"btn btn-danger" %> </p>    
+                <p> 開始: <%= start.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/start/#{start.id}/edit", class:"btn btn-info" %></p>
+                <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit", class:"btn btn-info" %> </p>
                 <p> タイム: <%= Time.at((en.time - start.time).floor).utc.strftime('%X') %> </p>
                 <% if en.memo.nil? || en.memo.empty? %>
-                    <p> <%= link_to "メモを追加する", "/end/#{en.id}/edit_memo" %> </p>
+                    <p> <%= link_to "メモを追加する", "/end/#{en.id}/edit_memo", class:"btn btn-info" %> </p>
                 <% else %>
-                    <p> メモ: <%= en.memo %> <%= link_to "(メモを編集)", "/end/#{en.id}/edit_memo" %> </p>
+                    <p> メモ: <%= en.memo %> <%= link_to "編集", "/end/#{en.id}/edit_memo", class:"btn btn-info" %> </p>
                 <% end %>
                 </li>
             <% end %>
