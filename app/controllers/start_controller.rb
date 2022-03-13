@@ -1,4 +1,6 @@
 class StartController < ApplicationController
+before_action :logged_in_user
+before_action :correct_user, only: [:destroy, :edit, :update]
 
 def create
     @user = current_user
@@ -36,6 +38,20 @@ def update
 end
 
 private
+def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください"
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @start = Start.find_by(id: params[:id])
+    @user = User.find_by(id: @start.user_id)
+    redirect_to login_url unless current_user?(@user)
+  end
+
 def start_params
     params.require(:start).permit(:time)
 end
