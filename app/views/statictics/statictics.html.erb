@@ -46,7 +46,7 @@
                 <p> 終了: <%= en.time.strftime('%H時 %M分') %> &nbsp;&nbsp; <%= link_to "編集", "/end/#{en.id}/edit", class:"btn btn-info" %> </p>
                 <p> タイム: <%= Time.at((en.time - start.time).floor).utc.strftime('%X') %> </p>
                 <% if en.memo.nil? || en.memo.empty? %>
-                    <p> <%= link_to "メモを追加する", "/end/#{en.id}/edit_memo", class:"btn btn-info" %> </p>
+                    <p> <%= link_to "メモを追加する", "/end/#{en.id}/edit_memo", class:"btn btn-primary" %> </p>
                 <% else %>
                     <p> メモ: <%= en.memo %> <%= link_to "編集", "/end/#{en.id}/edit_memo", class:"btn btn-info" %> </p>
                 <% end %>

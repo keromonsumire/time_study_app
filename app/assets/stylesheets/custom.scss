@@ -4,10 +4,18 @@
 /* universal */
 
  body {
+   height:100%;
     font-family: 'Kiwi Maru', serif;
     margin-top: 200px;
     background-color:#eee9e6;
   } 
+
+  #container{
+    min-height: 75vh; 
+    position: relative;
+    padding-bottom:60px;
+    box-sizing: border-box;
+  }
   
   section {
     overflow: auto;
@@ -28,6 +36,13 @@
   a{
       color:black;
   }
+
+  .center{
+    text-align:center;
+  }
+
+  
+
 
   /* typography */
 
@@ -107,6 +122,14 @@ footer {
     }
 
   }
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  background-color:white;
+  width: 100%;
+  border-top:1px solid #a9a9a9;
+}
   
 .contact{
    float:right;
@@ -152,6 +175,11 @@ input {
 
 .error {
   color:red;
+}
+
+.w25{
+  width:25%;
+  margin:auto;  
 }
 
 /* home */
