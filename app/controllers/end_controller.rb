@@ -63,7 +63,7 @@ end
 def correct_user
   @end = End.find_by(id: params[:id])
   @user = User.find_by(id: @end.user_id)
-  redirect_to login_url unless current_user?(@user)
+  redirect_to root_path unless current_user?(@user)
 end
 
 def end_params

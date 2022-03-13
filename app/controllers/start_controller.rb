@@ -49,7 +49,7 @@ def logged_in_user
   def correct_user
     @start = Start.find_by(id: params[:id])
     @user = User.find_by(id: @start.user_id)
-    redirect_to login_url unless current_user?(@user)
+    redirect_to root_path unless current_user?(@user)
   end
 
 def start_params
