@@ -4,8 +4,8 @@ class HomeController < ApplicationController
     def start_and_end
         @user = current_user
         if @user != nil
-        @start = Start.where(user_id: @user.id)
-        @end = End.where(user_id: @user.id)
+            @start = Start.where(user_id: @user.id)
+            @end = End.where(user_id: @user.id)
         end
     end
 
