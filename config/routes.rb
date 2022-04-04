@@ -23,5 +23,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get   'inquiry', to: 'inquiry#index'     # 入力画面
+  post  'inquiry/confirm', to: 'inquiry#confirm'   # 確認画面
+  post  'inquiry/thanks', to: 'inquiry#thanks'    # 送信完了画面
   resources :users
 end
