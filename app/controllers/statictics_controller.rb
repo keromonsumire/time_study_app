@@ -61,17 +61,17 @@ class StaticticsController < ApplicationController
 
   end
 
-  def point_up 
+  def point_up #前の月へ
     session[:month] += 1
     redirect_to statictics_path
   end
 
-  def point_down
+  def point_down #次の月へ
     session[:month] -= 1
     redirect_to statictics_path
   end
 
-  def up
+  def up #前の週へ
     if (session[:up] == nil) || (session[:up] % 7 != Time.current.wday) || session[:up].negative?
       session[:up] = Time.current.wday
     else
@@ -80,7 +80,7 @@ class StaticticsController < ApplicationController
     redirect_to statictics_path
   end  
 
-  def down
+  def down #次の週へ
     if session[:up] != nil
         session[:up] -= 7
     end
