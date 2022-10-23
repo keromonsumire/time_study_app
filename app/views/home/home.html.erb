@@ -16,21 +16,6 @@
     var second = ("00" + timer % 60).slice(-2);
     $('#timer').text(hour + ":" + minute + ":" + second);
   },1000); 
-  const t = document.getElementById("t");
-  const start = document.getElementById("start-25");
-  const sound = document.getElementById("sound")
-  let count = 0;
-  function al(){
-    var intervalID = setInterval(function(){
-      count++;
-      t.innerHTML = count;
-      if(count>24){
-        sound.play();
-        clearInterval(intervalID);
-      }
-    },1000);
-  };
-  start.onclick = al;
 </script>
 
 <p>
@@ -41,14 +26,6 @@
     <%= link_to "ストップ","/end/create", method: :post, class: "btn btn-lg btn-primary", id:"endcount" %>
 <% end %>
 </p>
-
-
-
-<h1 id="t">0</h1>
-<button id="start-25">25分アラーム</button>
-<audio id="sound" src="assets/Japanese_School_Bell02-02(Slow-Mid).mp3" controls></audio>
-
-
 </div> 
 
 <% else %>
