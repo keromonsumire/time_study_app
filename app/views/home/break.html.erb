@@ -1,0 +1,23 @@
+<h1>10分休憩所</h1>
+<div id="count_up_timer">00:00:00</div>
+<button id="reload" onclick="doReload()">カウントバグった時用リロード</button>
+<audio src="assets/Japanese_School_Bell02-02(Slow-Mid).mp3" id="sound">
+<script type="text/javascript">
+function doReload(){
+    window.location.reload();
+}
+intervalId = setInterval(function(){
+    document.getElementById("sound").play();
+    clearInterval(intervalId);
+  },1000*60*10); 
+  var timerVariable = setInterval(countUpTimer, 1000);
+  var totalSeconds = 0;
+  
+  function countUpTimer() {
+    ++totalSeconds;
+    var hour = ("00" + Math.floor(totalSeconds / 3600)).slice(-2);
+    var minute = ("00" + Math.floor((totalSeconds - hour * 3600) / 60)).slice(-2);
+    var seconds = totalSeconds - (hour * 3600 + minute * 60);
+    document.getElementById("count_up_timer").innerHTML = hour + ":" + minute + ":" + seconds;
+  }
+</script>

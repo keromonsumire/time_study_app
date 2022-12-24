@@ -15,9 +15,10 @@ class HomeController < ApplicationController
         end
     end
 
-
-
     def contact
+    end
+
+    def break
     end
     
 end

@@ -11,7 +11,7 @@ before_action :correct_user, only: [:destroy, :edit, :update]
     if (@start.count - 1 == @end.count)
         End.create(user_id:@user.id,start_id: @start.last.id, time: Time.current, range:((Time.now - @start.last.time)/3600).to_f)
     end
-    redirect_to statictics_path
+    redirect_to "/break"
     if @end.where(time: Time.current.all_day).sum(:range) >= 1
       flash[:success] = "計測完了！ 1時間以上頑張って偉いね！"
     else

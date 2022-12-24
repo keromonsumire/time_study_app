@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   patch 'end/:id/update_memo', to: 'end#update_memo'
   patch 'end/:id/update', to: 'end#update'
   get 'contact', to:'home#contact'
+  get 'break', to:'home#break'
   root 'home#home'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
