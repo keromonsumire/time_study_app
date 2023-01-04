@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-    before_action :start_and_end, only: :home
+    before_action :start_and_end, only: [:home, :break]
 
     def start_and_end
         @user = current_user
@@ -19,6 +19,7 @@ class HomeController < ApplicationController
     end
 
     def break
+        @today_total = @end.where(time: Time.current.all_day ).sum(:range)
     end
     
 end

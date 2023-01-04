@@ -1,7 +1,11 @@
-<h1>10分休憩所</h1>
+<h1>10分休憩所(10分後にチャイムが鳴ります)</h1>
+<h1>
+今日の合計・・・<%= @today_total.floor %>時間<%= (60*(@today_total - @today_total.floor)).floor %>分
+</h1>
 <div id="count_up_timer">00:00:00</div>
 <button id="reload" onclick="doReload()">カウントバグった時用リロード</button>
-<audio src="assets/Japanese_School_Bell02-02(Slow-Mid).mp3" id="sound">
+<p><%= link_to "勉強再開！","/start/create", method: :post, class: "btn btn-lg btn-info", id:"restart" %></p>
+<audio controls src="assets/Japanese_School_Bell02-02(Slow-Mid).mp3" id="sound">
 <script type="text/javascript">
 function doReload(){
     window.location.reload();
